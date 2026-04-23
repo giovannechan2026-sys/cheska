@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You</title>
+    <style>
+        body {
+          margin: 0;
+          font-family: 'Georgia', serif;
+          background: black;
+          color: white;
+          overflow: hidden;
+        }
+
+        .section {
+          height: 100vh;
+          display: none;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          padding: 40px;
+        }
+
+        .section.active {
+          display: flex;
+          animation: fade 1s ease;
+        }
+
+        @keyframes fade {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+          font-size: 2.5em;
+        }
+
+        p {
+          font-size: 1.2em;
+          max-width: 700px;
+          line-height: 1.8;
+        }
+
+        button {
+          margin-top: 30px;
+          padding: 14px 28px;
+          font-size: 1em;
+          border: 1px solid rgba(255,255,255,0.4);
+          background: rgba(255,255,255,0.08);
+          color: white;
+          cursor: pointer;
+          border-radius: 30px;
+          backdrop-filter: blur(6px);
+          transition: all 0.3s ease;
+          letter-spacing: 1px;
+        }
+
+        button:hover {
+          background: rgba(255,255,255,0.2);
+          transform: translateY(-2px) scale(1.03);
+          box-shadow: 0 8px 20px rgba(255,255,255,0.15);
+        }
+
+        button:active {
+          transform: scale(0.97);
+        }
+
+        button::after {
+          content: ' →';
+          opacity: 0;
+          transition: 0.3s;
+        }
+
+        button:hover::after {
+          opacity: 1;
+          margin-left: 6px;
+        }
+    </style>
+</head>
+<body>
+
+<audio id="bgm" loop>
+    <source src="museo.mp3" type="audio/mpeg">
+</audio>
+
+<div class="section active">
+    <div>
+        <h1>Before you continue...</h1>
+        <p>Turn on your volume.</p>
+        <button onclick="startExperience()">Start</button>
+    </div>
+</div>
+
+<div class="section"><p>I spent some time thinking about how I should start this… because you deserve something sincere.</p><button onclick="next()">Next</button></div>
+
+<div class="section"><p>This might be one of the last websites I’ll make for you… and I wanted it to feel calm and real.</p><button onclick="next()">Next</button></div>
+
+<div class="section"><p>I didn’t make this to change anything. I made this because I appreciate you.</p><button onclick="next()">Next</button></div>
+
+<div class="section"><p>For your effort, your dedication, and everything you quietly carry.</p><button onclick="next()">Next</button></div>
+
+<div class="section"><p>I’m proud of you. Truly.</p><button onclick="next()">Next</button></div>
+
+<div class="section"><p>I also want to explain something… about why I blocked you.</p><button onclick="next()">Next</button></div>
+
+<div class="section"><p>I know it felt sudden. I’m really sorry for that.</p><button onclick="next()">Next</button></div>
+
+<div class="section"><p>It wasn’t because I was angry. It was because I needed to step back.</p><button onclick="next()">Next</button></div>
+
+<div class="section"><p>I noticed I was becoming someone I didn’t like… repeating the same mistakes.</p><button onclick="next()">Next</button></div>
+
+<div class="section"><p>And I didn’t want you to keep seeing that version of me.</p><button onclick="next()">Next</button></div>
+
+<div class="section"><p>So I chose distance… to learn how to be better.</p><button onclick="next()">Next</button></div>
+
+<div class="section"><p>I respect you a lot. That’s why I want to show up properly next time.</p><button onclick="next()">Next</button></div>
+
+<div class="section"><p>I’m not expecting anything from you.</p><button onclick="next()">Next</button></div>
+
+<div class="section"><p>But someday, when I’ve grown… I hope I can make things right in a simple, genuine way.</p><button onclick="next()">Next</button></div>
+
+<div class="section"><p>For now… thank you. And I’m sorry.</p></div>
+
+<script>
+    let current = 0;
+    const sections = document.querySelectorAll('.section');
+
+    function startExperience() {
+      document.getElementById('bgm').play();
+      next();
+    }
+
+    function next() {
+      sections[current].classList.remove('active');
+      current++;
+      if (sections[current]) {
+        sections[current].classList.add('active');
+      }
+    }
+</script>
+
+</body>
+</html>
